@@ -1,0 +1,25 @@
+--- 
+- hosts: distnodes 
+  tasks: 
+  - name: install git 
+    apt: name=git state=present 
+  - name: downloading and setting up sqlmap
+    script: ./dlsqlmap.sh
+  - apt: name=python-dev state=present 
+  - apt: name=python-pip state=present 
+  - name: installing build essential
+    apt: name=build-essential state=present 
+  - name: installing mongo 
+    apt: name=mongodb state=present 
+  - name: install pymongo 
+    pip: name=pymongo
+  - name: install pika 
+    pip: name=pika 
+  - name: installing distributed
+    pip: name=distributed
+
+#  - name: create directory 
+#    shell: "{{ item }}" 
+#    with_items:
+#    - mkdir code 
+#    - cd ./code
